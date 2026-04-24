@@ -1,7 +1,7 @@
 ---
 name: "Шаг 6: Style — Голос, яркость, образность"
 type: task
-status: todo
+status: done
 priority: high
 depends_on: ["05-rewrite-intrigue"]
 shapiro_page: "Style (Page 4)"
