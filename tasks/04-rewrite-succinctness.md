@@ -1,7 +1,7 @@
 ---
 name: "Шаг 4: Rewrite — Сжатость"
 type: task
-status: todo
+status: done
 priority: high
 depends_on: ["03-rewrite-clarity"]
 shapiro_page: "Rewriting (Page 3) — Goal: Be concise"
