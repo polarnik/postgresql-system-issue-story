@@ -3,6 +3,9 @@ name: "Фреймворк: Julian Shapiro для устного доклада"
 type: reference
 status: done
 priority: highest
+audit: "tasks/00-audit-result.md"
+audit_score: "Novelty 7/10, Resonance 6.5/10, Trifecta Hook 6/Peak 8/End 5"
+top_issues: "1) банальный hook, 2) пустыня в Р3, 3) слабый финал, 4) мало аналогий"
 ---
 
 # Адаптация фреймворка Julian Shapiro для устного доклада
