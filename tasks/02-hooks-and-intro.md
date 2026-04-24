@@ -1,7 +1,7 @@
 ---
 name: "Шаг 2: Хуки и вступление"
 type: task
-status: todo
+status: done
 priority: highest
 depends_on: ["01-objective-and-motivation"]
 shapiro_page: "Ideas (Page 1)"
