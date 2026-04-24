@@ -1,7 +1,7 @@
 ---
 name: "Шаг 1: Объектив и мотивация"
 type: task
-status: todo
+status: done
 priority: highest
 depends_on: []
 shapiro_page: "Ideas (Page 1)"
