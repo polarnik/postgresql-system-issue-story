@@ -1,7 +1,7 @@
 ---
 name: "Шаг 5: Rewrite — Интрига и дофаминовые точки"
 type: task
-status: todo
+status: done
 priority: high
 depends_on: ["04-rewrite-succinctness"]
 shapiro_page: "Rewriting (Page 3) — Goal: Be intriguing"
