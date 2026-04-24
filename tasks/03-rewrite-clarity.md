@@ -1,7 +1,7 @@
 ---
 name: "Шаг 3: Rewrite — Ясность"
 type: task
-status: todo
+status: done
 priority: high
 depends_on: ["02-hooks-and-intro"]
 shapiro_page: "Rewriting (Page 3) — Goal: Be understood"
