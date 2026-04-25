@@ -4,6 +4,7 @@ RUN apt-get update && apt-get install -y \
     chromium \
     fonts-freefont-ttf \
     fonts-liberation \
+    fonts-roboto \
     fonts-noto-color-emoji \
     fonts-urw-base35 \
     fontconfig \
