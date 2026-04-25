@@ -1,0 +1,30 @@
+%%{init: { 'theme': 'dark', 'themeVariables': {
+    'cScale0': '#2a2a4e',
+    'cScale1': '#2a2a4e',
+    'cScale2': '#3a2a1e',
+    'cScaleLabel0': '#eee',
+    'cScaleLabel1': '#eee',
+    'cScaleLabel2': '#FFD02F'
+}}}%%
+
+timeline
+    title Расследование
+    section Декабрь-Январь
+        30 дек
+            : segfault
+            : безумная гипотеза
+        7 янв
+            : пинг-понг
+    section Зацепки
+        dmesg
+            : нули вместо кода
+            : не железо, не Postgres
+        Воскрешение
+            : падение без падения
+    section Условия
+        XFS
+            : файловая система
+        init_on_free
+            : ФСТЭК
+        Memory pressure
+            : mmap

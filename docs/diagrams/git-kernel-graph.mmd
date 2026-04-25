@@ -1,0 +1,28 @@
+%%{init: { 'theme': 'dark', 'themeVariables': {
+    'git0': '#FFD02F',
+    'git1': '#6e9fff',
+    'git2': '#ff4444',
+    'gitBranchLabel0': '#eee',
+    'gitBranchLabel1': '#eee',
+    'gitBranchLabel2': '#eee',
+    'commitLabelColor': '#eee',
+    'commitLabelBackground': '#2a2a4e',
+    'tagLabelColor': '#eee',
+    'tagLabelBackground': '#4e2a2a',
+    'tagLabelBorder': '#ff4444'
+}}}%%
+
+gitGraph LR:
+    commit id: "v5.17"
+    branch net
+    commit id: "a1"
+    commit id: "a2"
+    commit id: "a3"
+    checkout main
+    branch mm
+    commit id: "b1"
+    commit id: "b2" type: HIGHLIGHT
+    checkout main
+    merge net
+    merge mm tag: "v5.18"
+    commit id: "..."

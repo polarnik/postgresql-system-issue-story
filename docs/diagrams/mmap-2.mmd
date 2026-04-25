@@ -1,0 +1,28 @@
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#1a1a2e', 'primaryTextColor': '#eee', 'lineColor': '#FFD02F'}, 'flowchart': { 'nodeSpacing': 25, 'rankSpacing': 20 }}}%%
+
+flowchart TB
+    classDef done fill:#2a2a4e,stroke:#FFD02F,color:#eee
+    classDef active fill:#3a2a1e,stroke:#FFD02F,color:#FFD02F
+    classDef pending fill:#1e1e30,stroke:#444,color:#666
+    classDef error fill:#4e2a2a,stroke:#ff4444,color:#eee
+
+    subgraph S1 [" "]
+        direction LR
+        D["Диск"]:::done --> M["Память"]:::active --> CPU["CPU"]:::pending
+    end
+
+    subgraph S2 [" "]
+        direction LR
+        R["reclaim"]:::active --> I["init_on_free"]:::pending --> BUG["race"]:::pending
+    end
+
+    S2 --> M
+
+    linkStyle 0 stroke:#FFD02F,stroke-width:2px
+    linkStyle 1 stroke:#444,stroke-width:2px
+    linkStyle 2 stroke:#FFD02F,stroke-width:2px
+    linkStyle 3 stroke:#444,stroke-width:2px
+    linkStyle 4 stroke:#FFD02F,stroke-width:2px
+
+    style S1 fill:transparent,stroke:transparent
+    style S2 fill:transparent,stroke:transparent
