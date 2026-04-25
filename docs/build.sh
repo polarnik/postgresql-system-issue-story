@@ -72,7 +72,7 @@ build_diagrams() {
     for svg in "${SCRIPT_DIR}/${out_dir}"/*.svg; do
       [ -f "$svg" ] || continue
       sed -i '' \
-        -e 's/#0061e0/#cc7e19/g' \
+        -e 's/#9966FF/#cc7e19/g' \
         "$svg"
     done
   fi

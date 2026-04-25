@@ -1,30 +1,47 @@
-%%{init: {'theme': 'base', 'themeVariables': { 'darkMode': true, 'background': '#000000', 'primaryColor': '#ff9e1f', 'primaryTextColor': '#fff', 'primaryBorderColor': '#cc7e19', 'secondaryColor': '#111111', 'secondaryTextColor': '#fff', 'tertiaryColor': '#111111', 'lineColor': '#ff9e1f', 'textColor': '#fff', 'mainBkg': '#111111', 'fontFamily': 'Roboto, sans-serif'}, 'flowchart': { 'nodeSpacing': 25, 'rankSpacing': 20 }}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'darkMode': true, 'background': '#000000', 'primaryColor': '#ff9e1f', 'primaryTextColor': '#fff', 'primaryBorderColor': '#cc7e19', 'secondaryColor': '#111111', 'secondaryTextColor': '#fff', 'tertiaryColor': '#111111', 'lineColor': '#ff9e1f', 'textColor': '#fff', 'mainBkg': '#111111', 'fontFamily': 'verdana'}, 'flowchart': { 'nodeSpacing': 30, 'rankSpacing': 25 }}}%%
 
 flowchart TB
-    classDef done fill:#1a1a1a,stroke:#ff9e1f,color:#eee
-    classDef active fill:#2a1500,stroke:#ff9e1f,color:#ff9e1f
-    classDef pending fill:#111111,stroke:#444,color:#666
-    classDef error fill:#3a1010,stroke:#ff4444,color:#eee
-    classDef success fill:#103a10,stroke:#44ff88,color:#eee
+    classDef done fill:#1a1a1a,stroke:#ff9e1f,color:#eee,stroke-width:2px
+    classDef active fill:#ff9e1f,stroke:#cc7e19,color:#000,stroke-width:2px
+    classDef pending fill:#111111,stroke:#333,color:#555,stroke-width:2px
+    classDef error fill:#3a1010,stroke:#ff4444,color:#eee,stroke-width:2px
+    classDef success fill:#103a10,stroke:#44ff88,color:#eee,stroke-width:2px
 
     subgraph S1 [" "]
         direction LR
-        A["Postgres"]:::done --> B["00 00 00"]:::error --> C["SIGSEGV"]:::error
+        A["Postgres"] --> B["Код = нули"] --> C["Сегфолт"]
     end
 
     subgraph S2 [" "]
         direction LR
-        D["Логгер 100мс"]:::active --> E["Ядро: диск"]:::pending --> F["Повтор"]:::pending --> G["Работает!"]:::pending
+        D["Лог: 100мс"] --> E["Ядро грузит"] --> F["Код верный"]
+    end
+
+    subgraph S3 [" "]
+        direction LR
+        G["Повтор"] --> H["Работает!"]
     end
 
     S1 --> S2
-
-    linkStyle 0 stroke:#ff9e1f,stroke-width:2px
-    linkStyle 1 stroke:#ff4444,stroke-width:2px
-    linkStyle 2 stroke:#ff4444,stroke-width:2px
-    linkStyle 3 stroke:#444,stroke-width:2px
-    linkStyle 4 stroke:#444,stroke-width:2px
-    linkStyle 5 stroke:#ff4444,stroke-width:2px
+    S2 --> S3
 
     style S1 fill:transparent,stroke:transparent
     style S2 fill:transparent,stroke:transparent
+    style S3 fill:transparent,stroke:transparent
+
+    A:::done
+    B:::done
+    C:::done
+    D:::active
+    E:::pending
+    F:::pending
+    G:::pending
+    H:::pending
+
+    linkStyle 0 stroke:#ff9e1f,stroke-width:2px
+    linkStyle 1 stroke:#ff4444,stroke-width:2px
+    linkStyle 2 stroke:#ff9e1f,stroke-width:2px
+    linkStyle 3 stroke:#333,stroke-width:2px
+    linkStyle 4 stroke:#333,stroke-width:2px
+    linkStyle 5 stroke:#333,stroke-width:2px
+    linkStyle 6 stroke:#333,stroke-width:2px

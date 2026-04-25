@@ -109,12 +109,16 @@ Mermaid автоматически генерирует синие цвета (`
 Для полного контроля цветов нужно задавать ВСЕ 12 переменных cScale0-11, cScaleLabel0-11, cScalePeer1-12 + fontFamily + lineColor. Если задать только cScale0 — Mermaid автогенерирует остальные с нежелательными цветами.
 
 ```
-'fontFamily': 'Roboto, sans-serif',
-'lineColor': '#333',
-'cScale0': '#111111',    // и так для каждого из 12
-'cScaleLabel0': '#ff9e1f',
-'cScalePeer1': '#333',   // 1-indexed!
+'fontFamily': 'verdana',
+'lineColor': '#ff9e1f',
+'cScale0': '#222',        // done: тёмный
+'cScale4': '#ff9e1f',     // active: оранжевый
+'cScaleLabel0': '#aaa',   // done: серый текст
+'cScaleLabel4': '#000',   // active: чёрный текст на оранжевом
+'cScaleLabel11': '#ff9e1f', // ВАЖНО: задаёт цвет стрелок!
+'cScalePeer1': '#333',    // 1-indexed!
 ```
+**Неочевидно:** `cScaleLabel11` управляет цветом стрелок на timeline, а не текстом 12-й секции. Эталонный файл — `timeline-5.mmd`.
 
 ---
 
