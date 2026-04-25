@@ -2,7 +2,7 @@
 # Marp CLI configuration for "Системные баги под нагрузкой" talk
 
 # Allow to access local files from Markdown while converting PDF (NOT SECURE)
-allowLocalFiles: false
+allowLocalFiles: true
 
 # Define author of the slide deck
 author: Mikhail Zhilin, Postgres Professional
@@ -10,9 +10,9 @@ author: Mikhail Zhilin, Postgres Professional
 # Setting options for bespoke template
 bespoke:
   # [Bespoke] Use on-screen controller (true by default)
-  osc: false
+  osc: true
   # [Bespoke] Use progress bar (false by default)
-  progress: false
+  progress: true
   # [Bespoke] Use transitions (Only in browsers supported View Transition API: true by default)
   transition: true
 
