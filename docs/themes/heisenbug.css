@@ -1,0 +1,209 @@
+@charset "UTF-8";
+/*!
+ * Marp / Marpit custom theme
+ * @theme heisenbug
+ * @auto-scaling true
+ * @author Mikhail Zhilin, Postgres Professional
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/rainbow.min.css");
+
+:root {
+    --bg-color: #1a1a2e;
+    --text-color: #eee;
+    --accent: #FFD02F;
+    --accent-dim: #b8941f;
+    --code-bg: #0f0f1a;
+    --error: #ff4444;
+    --success: #44ff88;
+    --muted: rgba(255, 255, 255, 0.35);
+}
+
+/* ===== Base slide ===== */
+section {
+    width: 1280px;
+    height: 720px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    font-size: 170%;
+    padding: 40px 60px;
+    line-height: 1.4;
+}
+
+/* ===== Typography ===== */
+h1 {
+    font-size: 1.6em;
+    font-weight: 700;
+    margin-bottom: 0.3em;
+}
+
+h2 {
+    font-size: 1.1em;
+    font-weight: 400;
+    color: var(--accent);
+    margin-bottom: 0.5em;
+}
+
+h3 {
+    font-size: 0.85em;
+    font-weight: 400;
+    color: var(--muted);
+}
+
+strong {
+    color: var(--accent);
+}
+
+em {
+    opacity: 0.35;
+    font-style: normal;
+}
+
+a {
+    color: var(--accent-dim);
+    text-decoration: underline;
+}
+
+/* ===== Lists ===== */
+ul, ol {
+    margin-left: 0.5em;
+}
+
+li {
+    margin-bottom: 0.3em;
+}
+
+li::marker {
+    color: var(--accent);
+}
+
+/* ===== Code ===== */
+code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75em;
+    background-color: var(--code-bg);
+    border-radius: 4px;
+    padding: 2px 6px;
+}
+
+pre {
+    background-color: var(--code-bg);
+    border-radius: 8px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    font-size: 0.7em;
+    line-height: 1.5;
+}
+
+/* ===== Slide layouts ===== */
+
+/* Lead: title slide */
+section.lead {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 100px;
+}
+
+section.lead h1 {
+    font-size: 2em;
+    margin-bottom: 0.2em;
+}
+
+section.lead h2 {
+    font-size: 1em;
+    color: var(--accent);
+}
+
+section.lead h3 {
+    font-size: 0.7em;
+    color: var(--muted);
+    margin-top: 1em;
+}
+
+/* Main: centered heading with content */
+section.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px;
+}
+
+section.main h1 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+}
+
+/* Section title: big text, section separator */
+section.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+section.title h1 {
+    font-size: 2.2em;
+}
+
+section.title h2 {
+    font-size: 0.9em;
+    color: var(--muted);
+    margin-top: 0.5em;
+}
+
+/* Problem slide */
+section.problem {
+    border-left: 6px solid var(--error);
+}
+
+/* Solution slide */
+section.solution {
+    border-left: 6px solid var(--success);
+}
+
+/* ===== Tables ===== */
+table {
+    font-size: 0.75em;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    background-color: rgba(255, 208, 47, 0.15);
+    color: var(--accent);
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 2px solid var(--accent-dim);
+}
+
+td {
+    padding: 6px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== Page number ===== */
+section::after {
+    font-size: 0.5em;
+    color: var(--muted);
+}
+
+/* ===== Blockquote (for callouts) ===== */
+blockquote {
+    border-left: 4px solid var(--accent);
+    padding-left: 1em;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+    margin: 0.5em 0;
+}

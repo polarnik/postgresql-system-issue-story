@@ -1,0 +1,69 @@
+# .marprc.yml
+# Marp CLI configuration for "Системные баги под нагрузкой" talk
+
+# Allow to access local files from Markdown while converting PDF (NOT SECURE)
+allowLocalFiles: false
+
+# Define author of the slide deck
+author: Mikhail Zhilin, Postgres Professional
+
+# Setting options for bespoke template
+bespoke:
+  # [Bespoke] Use on-screen controller (true by default)
+  osc: false
+  # [Bespoke] Use progress bar (false by default)
+  progress: false
+  # [Bespoke] Use transitions (Only in browsers supported View Transition API: true by default)
+  transition: true
+
+# Define description of the slide deck
+description: "Системные баги под нагрузкой: как мы год искали баг в ядре Linux, который ронял PostgreSQL. XFS, init_on_free, memory pressure, race condition, git bisect."
+
+# Define keywords for the slide deck
+keywords:
+  - PostgreSQL
+  - Linux kernel
+  - XFS
+  - init_on_free
+  - race condition
+  - git bisect
+  - performance testing
+  - Postgres Professional
+  - Heisenbug
+
+# Define the language of converted HTML
+lang: RU
+
+# Enable or disable HTML tags
+html: true
+
+# The base options for the constructor of engine
+options:
+  looseYAML: false
+  markdown:
+    breaks: false
+  emoji:
+    shortcode: false
+    unicode: false
+
+# NOTE: inputDir and output are NOT set here — they conflict
+# with passing file names on the command line (build.sh).
+# Use build.sh to control input/output per mode.
+
+# Set the number of concurrency for parallel conversion
+parallel: 1
+
+# Choose template (bespoke by default)
+template: bespoke
+
+# Override theme by name or CSS file
+theme: ./themes/heisenbug.css
+
+# Path to additional theme CSS files
+# themeSet: ./themes/base.css
+
+# Define title of the slide deck
+title: "Системные баги под нагрузкой"
+
+# Watch mode is controlled via build.sh (./build.sh watch)
+# Do not set watch: true here — it blocks one-shot generation
