@@ -1,0 +1,49 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'darkMode': true, 'background': '#000000', 'primaryColor': '#ff9e1f', 'primaryTextColor': '#fff', 'primaryBorderColor': '#cc7e19', 'secondaryColor': '#111111', 'secondaryTextColor': '#fff', 'tertiaryColor': '#111111', 'lineColor': '#ff9e1f', 'textColor': '#fff', 'mainBkg': '#111111', 'fontFamily': 'arial'}, 'flowchart': { 'nodeSpacing': 30, 'rankSpacing': 25 }}}%%
+
+flowchart TB
+    classDef done fill:transparent,stroke:#555,color:#888,stroke-width:2px
+    classDef active fill:#2a1500,stroke:#ff9e1f,color:#ff9e1f,stroke-width:2px
+    classDef pending fill:#111,stroke:#333,color:#444,stroke-width:2px
+    classDef error fill:#3a1010,stroke:#ff4444,color:#ff4444,stroke-width:2px
+    classDef success fill:#103a10,stroke:#44ff88,color:#44ff88,stroke-width:2px
+
+    subgraph S1 ["CPU1"]
+        direction LR
+        A["Берёт страницу"] --> B["Страница у CPU1"] --> C["Lock отпущен"]
+    end
+
+    subgraph S2 ["CPU2"]
+        direction LR
+        D["Удаляет страницу"] --> E["Lock взят"] --> F["Страницы нет!"]
+    end
+
+    subgraph S3 ["Результат"]
+        direction LR
+        G["Указатели"] --> H["Bad page"] --> I["Сегфолт!"]
+    end
+
+    S1 --> S2
+    S2 --> S3
+
+    style S1 fill:transparent,stroke:#555,color:#888
+    style S2 fill:transparent,stroke:#555,color:#888
+    style S3 fill:transparent,stroke:#555,color:#888
+
+    A:::done
+    B:::done
+    C:::done
+    D:::done
+    E:::done
+    F:::error
+    G:::pending
+    H:::pending
+    I:::pending
+
+    linkStyle 0 stroke:#555,stroke-width:2px
+    linkStyle 1 stroke:#555,stroke-width:2px
+    linkStyle 2 stroke:#555,stroke-width:2px
+    linkStyle 3 stroke:#ff4444,stroke-width:2px
+    linkStyle 4 stroke:#333,stroke-width:2px
+    linkStyle 5 stroke:#333,stroke-width:2px
+    linkStyle 6 stroke:#555,stroke-width:2px
+    linkStyle 7 stroke:#333,stroke-width:2px
