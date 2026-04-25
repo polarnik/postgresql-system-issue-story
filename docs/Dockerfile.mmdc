@@ -1,0 +1,29 @@
+FROM node:22-slim
+
+RUN apt-get update && apt-get install -y \
+    chromium \
+    fonts-freefont-ttf \
+    fonts-liberation \
+    fonts-noto-color-emoji \
+    fonts-urw-base35 \
+    fontconfig \
+    --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/* && \
+    fc-cache -fv
+
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
+
+# Install mermaid-cli, then upgrade mermaid to 11.14+ (venn-beta support)
+RUN npm install -g @mermaid-js/mermaid-cli@11.12.0 && \
+    cd /usr/local/lib/node_modules/@mermaid-js/mermaid-cli && \
+    npm install mermaid@11.14.0
+
+# Run as non-root user
+RUN groupadd -r mmdc && useradd -r -g mmdc -m mmdc
+# Puppeteer config: --no-sandbox required in Docker (no kernel namespaces)
+RUN echo '{"args":["--no-sandbox","--disable-setuid-sandbox"]}' > /home/mmdc/puppeteer-config.json && chown mmdc:mmdc /home/mmdc/puppeteer-config.json
+
+USER mmdc
+WORKDIR /data
+ENTRYPOINT ["mmdc", "-p", "/home/mmdc/puppeteer-config.json"]

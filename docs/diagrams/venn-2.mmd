@@ -1,0 +1,15 @@
+%%{init: {"theme": "base", "themeVariables": {"darkMode": true, "background": "#000000", "fontFamily": "verdana", "primaryColor": "#ff9e1f", "primaryTextColor": "#fff"}}}%%
+
+venn-beta
+    title "Три условия бага"
+    set X["XFS"]
+    set I["init_on_free"]
+    set P["Давление"]
+    union X,I
+    union I,P
+    union X,P
+    union X,I,P[""]
+
+    style X fill:#222,stroke:#555,color:#888,stroke-width:2,fill-opacity:0.3
+    style I fill:#103a10,stroke:#44ff88,color:#44ff88,stroke-width:2,fill-opacity:0.9
+    style P fill:#222,stroke:#444,color:#666,stroke-width:2,fill-opacity:0.5

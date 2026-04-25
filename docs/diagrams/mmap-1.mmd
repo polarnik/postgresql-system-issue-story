@@ -1,28 +1,49 @@
-%%{init: {'theme': 'base', 'themeVariables': { 'darkMode': true, 'background': '#000000', 'primaryColor': '#ff9e1f', 'primaryTextColor': '#fff', 'primaryBorderColor': '#cc7e19', 'secondaryColor': '#111111', 'secondaryTextColor': '#fff', 'tertiaryColor': '#111111', 'lineColor': '#ff9e1f', 'textColor': '#fff', 'mainBkg': '#111111', 'fontFamily': 'verdana'}, 'flowchart': { 'nodeSpacing': 25, 'rankSpacing': 20 }}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'darkMode': true, 'background': '#000000', 'primaryColor': '#ff9e1f', 'primaryTextColor': '#fff', 'primaryBorderColor': '#cc7e19', 'secondaryColor': '#111111', 'secondaryTextColor': '#fff', 'tertiaryColor': '#111111', 'lineColor': '#ff9e1f', 'textColor': '#fff', 'mainBkg': '#111111', 'fontFamily': 'verdana'}, 'flowchart': { 'nodeSpacing': 30, 'rankSpacing': 25 }}}%%
 
 flowchart TB
-    classDef done fill:#1a1a1a,stroke:#ff9e1f,color:#eee
-    classDef active fill:#2a1500,stroke:#ff9e1f,color:#ff9e1f
-    classDef pending fill:#111111,stroke:#444,color:#666
-    classDef error fill:#3a1010,stroke:#ff4444,color:#eee
+    classDef done fill:transparent,stroke:#555,color:#888,stroke-width:2px
+    classDef active fill:#2a1500,stroke:#ff9e1f,color:#ff9e1f,stroke-width:2px
+    classDef pending fill:#111,stroke:#333,color:#444,stroke-width:2px
+    classDef error fill:#3a1010,stroke:#ff4444,color:#ff4444,stroke-width:2px
+    classDef success fill:#103a10,stroke:#44ff88,color:#44ff88,stroke-width:2px
 
     subgraph S1 [" "]
         direction LR
-        D["Диск"]:::active --> M["Память"]:::active --> CPU["CPU"]:::active
+        A["Файл XFS"] --> B["В памяти"] --> C["CPU: код"]
     end
 
     subgraph S2 [" "]
         direction LR
-        R["reclaim"]:::pending --> I["init_on_free"]:::pending --> BUG["race"]:::pending
+        D["Нехватка"] --> E["Выгружена"] --> F["Обнулена"]
     end
 
-    S2 --> M
+    subgraph S3 [" "]
+        direction LR
+        G["Обращение"] --> H["Не перечитана"] --> I["Код = нули!"]
+    end
 
-    linkStyle 0 stroke:#ff9e1f,stroke-width:2px
-    linkStyle 1 stroke:#ff9e1f,stroke-width:2px
-    linkStyle 2 stroke:#444,stroke-width:2px
-    linkStyle 3 stroke:#444,stroke-width:2px
-    linkStyle 4 stroke:#444,stroke-width:2px
+    S1 --> S2
+    S2 --> S3
 
     style S1 fill:transparent,stroke:transparent
     style S2 fill:transparent,stroke:transparent
+    style S3 fill:transparent,stroke:transparent
+
+    A:::active
+    B:::active
+    C:::success
+    D:::pending
+    E:::pending
+    F:::pending
+    G:::pending
+    H:::pending
+    I:::pending
+
+    linkStyle 0 stroke:#ff9e1f,stroke-width:2px
+    linkStyle 1 stroke:#ff9e1f,stroke-width:2px
+    linkStyle 2 stroke:#333,stroke-width:2px
+    linkStyle 3 stroke:#333,stroke-width:2px
+    linkStyle 4 stroke:#333,stroke-width:2px
+    linkStyle 5 stroke:#333,stroke-width:2px
+    linkStyle 6 stroke:#333,stroke-width:2px
+    linkStyle 7 stroke:#333,stroke-width:2px

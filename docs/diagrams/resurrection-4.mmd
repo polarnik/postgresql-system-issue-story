@@ -1,11 +1,11 @@
 %%{init: {'theme': 'base', 'themeVariables': { 'darkMode': true, 'background': '#000000', 'primaryColor': '#ff9e1f', 'primaryTextColor': '#fff', 'primaryBorderColor': '#cc7e19', 'secondaryColor': '#111111', 'secondaryTextColor': '#fff', 'tertiaryColor': '#111111', 'lineColor': '#ff9e1f', 'textColor': '#fff', 'mainBkg': '#111111', 'fontFamily': 'verdana'}, 'flowchart': { 'nodeSpacing': 30, 'rankSpacing': 25 }}}%%
 
 flowchart TB
-    classDef done fill:#1a1a1a,stroke:#ff9e1f,color:#eee,stroke-width:2px
-    classDef active fill:#ff9e1f,stroke:#cc7e19,color:#000,stroke-width:2px
-    classDef pending fill:#111111,stroke:#333,color:#555,stroke-width:2px
-    classDef error fill:#3a1010,stroke:#ff4444,color:#eee,stroke-width:2px
-    classDef success fill:#103a10,stroke:#44ff88,color:#eee,stroke-width:2px
+    classDef done fill:transparent,stroke:#555,color:#888,stroke-width:2px
+    classDef active fill:#2a1500,stroke:#ff9e1f,color:#ff9e1f,stroke-width:2px
+    classDef pending fill:#111,stroke:#333,color:#444,stroke-width:2px
+    classDef error fill:#3a1010,stroke:#ff4444,color:#ff4444,stroke-width:2px
+    classDef success fill:#103a10,stroke:#44ff88,color:#44ff88,stroke-width:2px
 
     subgraph S1 [" "]
         direction LR
@@ -38,10 +38,10 @@ flowchart TB
     G:::success
     H:::success
 
-    linkStyle 0 stroke:#ff9e1f,stroke-width:2px
-    linkStyle 1 stroke:#ff4444,stroke-width:2px
-    linkStyle 2 stroke:#ff9e1f,stroke-width:2px
-    linkStyle 3 stroke:#ff9e1f,stroke-width:2px
-    linkStyle 4 stroke:#ff9e1f,stroke-width:2px
-    linkStyle 5 stroke:#44ff88,stroke-width:2px
+    linkStyle 0 stroke:#555,stroke-width:2px
+    linkStyle 1 stroke:#555,stroke-width:2px
+    linkStyle 2 stroke:#555,stroke-width:2px
+    linkStyle 3 stroke:#555,stroke-width:2px
+    linkStyle 4 stroke:#44ff88,stroke-width:2px
+    linkStyle 5 stroke:#555,stroke-width:2px
     linkStyle 6 stroke:#44ff88,stroke-width:2px

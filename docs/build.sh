@@ -17,7 +17,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 MARP_IMAGE="marpteam/marp-cli:latest"
-MMDC_IMAGE="minlag/mermaid-cli:latest"
+MMDC_IMAGE="mmdc-heisenbug:latest"
 CONTAINER_WORKDIR="/home/marp/app"
 MMDC_WORKDIR="/data"
 
@@ -26,8 +26,17 @@ DOCKER_MARP="docker run --rm \
   -e LANG=C.UTF-8"
 
 DOCKER_MMDC="docker run --rm \
-  -v ${SCRIPT_DIR}:${MMDC_WORKDIR} \
+  -v ${SCRIPT_DIR}/diagrams:${MMDC_WORKDIR}/diagrams:ro \
+  -v ${SCRIPT_DIR}/img:${MMDC_WORKDIR}/img \
   -e LANG=C.UTF-8"
+
+# --- Build custom mermaid-cli image if missing ---
+ensure_mmdc_image() {
+  if ! docker image inspect "$MMDC_IMAGE" >/dev/null 2>&1; then
+    echo "Building custom mermaid-cli image (Mermaid 11.14.0 with venn-beta support)..."
+    docker build -t "$MMDC_IMAGE" -f "${SCRIPT_DIR}/Dockerfile.mmdc" "${SCRIPT_DIR}"
+  fi
+}
 
 # --- Step 1: Convert Mermaid diagrams to SVG ---
 build_diagrams() {
@@ -46,6 +55,7 @@ build_diagrams() {
     return
   fi
 
+  ensure_mmdc_image
   echo "Building Mermaid diagrams..."
   for mmd in ${mmd_files}; do
     local basename=$(basename "$mmd" .mmd)
@@ -91,35 +101,35 @@ case "$MODE" in
     build_diagrams
     echo ""
     echo "Building HTML and watching for changes..."
-    echo "Open ${SCRIPT_DIR}/slides.html in your browser."
-    echo "Edit slides.md — HTML will rebuild automatically."
+    echo "Open ${SCRIPT_DIR}/index.html in your browser."
+    echo "Edit index.md — HTML will rebuild automatically."
     echo "NOTE: If you change .mmd files, re-run ./build.sh diagrams"
     echo "Press Ctrl+C to stop."
-    $DOCKER_MARP "$MARP_IMAGE" slides.md -o slides.html -w
+    $DOCKER_MARP "$MARP_IMAGE" index.md -o index.html -w
     ;;
 
   html)
     build_diagrams
     echo ""
-    echo "Generating HTML slides..."
-    $DOCKER_MARP "$MARP_IMAGE" slides.md -o slides.html
-    echo "Done: ${SCRIPT_DIR}/slides.html"
+    echo "Generating HTML index..."
+    $DOCKER_MARP "$MARP_IMAGE" index.md -o index.html
+    echo "Done: ${SCRIPT_DIR}/index.html"
     ;;
 
   pdf)
     build_diagrams
     echo ""
     echo "Generating PDF with speaker notes..."
-    $DOCKER_MARP "$MARP_IMAGE" slides.md --pdf --pdf-notes -o slides.pdf
-    echo "Done: ${SCRIPT_DIR}/slides.pdf"
+    $DOCKER_MARP "$MARP_IMAGE" index.md --pdf --pdf-notes -o index.pdf
+    echo "Done: ${SCRIPT_DIR}/index.pdf"
     ;;
 
   pptx)
     build_diagrams
     echo ""
     echo "Generating PowerPoint..."
-    $DOCKER_MARP "$MARP_IMAGE" slides.md --pptx -o slides.pptx
-    echo "Done: ${SCRIPT_DIR}/slides.pptx"
+    $DOCKER_MARP "$MARP_IMAGE" index.md --pptx -o index.pptx
+    echo "Done: ${SCRIPT_DIR}/index.pptx"
     ;;
 
   serve)
