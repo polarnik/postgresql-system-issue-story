@@ -1,7 +1,7 @@
 ---
 name: "Шаг 7: Feedback и итерация"
 type: task
-status: in_progress
+status: done
 priority: medium
 depends_on: ["06-style-and-voice"]
 shapiro_page: "Rewriting (Page 3) — Feedback + Practicing (Page 5)"
