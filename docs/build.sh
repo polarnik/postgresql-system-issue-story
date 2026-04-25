@@ -73,9 +73,6 @@ build_diagrams() {
       [ -f "$svg" ] || continue
       sed -i '' \
         -e 's/#0061e0/#cc7e19/g' \
-        -e 's/#00296f/#333/g' \
-        -e 's/#01629c/#333/g' \
-        -e 's/stroke:#eeeeee/stroke:#333/g' \
         "$svg"
     done
   fi
