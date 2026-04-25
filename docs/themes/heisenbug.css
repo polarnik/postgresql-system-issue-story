@@ -11,14 +11,15 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/rainbow.min.css");
 
 :root {
-    --bg-color: #1a1a2e;
-    --text-color: #eee;
-    --accent: #FFD02F;
-    --accent-dim: #b8941f;
-    --code-bg: #0f0f1a;
+    --bg-color: #000000;
+    --text-color: #fff;
+    --accent: #ff9e1f;
+    --accent-dim: #cc7e19;
+    --code-bg: #0a0a0a;
     --error: #ff4444;
     --success: #44ff88;
     --muted: rgba(255, 255, 255, 0.35);
+    --logo: url("themes/img/hb-logo.png");
 }
 
 /* ===== Base slide ===== */
@@ -26,11 +27,17 @@ section {
     width: 1280px;
     height: 720px;
     background-color: var(--bg-color);
+    background-image: var(--logo);
+    background-position: 95% 95%;
+    background-repeat: no-repeat;
+    background-size: 20%;
+    background-origin: padding-box;
     color: var(--text-color);
     font-family: 'Roboto', sans-serif;
     font-size: 170%;
     padding: 40px 60px;
     line-height: 1.4;
+    text-shadow: 1px 1px 5px var(--bg-color), 0px 0px 5px var(--bg-color), 1px 2px 10px var(--bg-color), -1px -1px 10px var(--bg-color);
 }
 
 /* ===== Typography ===== */
@@ -181,7 +188,7 @@ table {
 }
 
 th {
-    background-color: rgba(255, 208, 47, 0.15);
+    background-color: rgba(255, 158, 31, 0.15);
     color: var(--accent);
     padding: 8px 12px;
     text-align: left;

@@ -67,6 +67,17 @@ build_diagrams() {
     echo "  All diagrams up to date."
   else
     echo "  Built ${count} diagram(s)."
+    # Post-process: fix Mermaid auto-generated colors to match Heisenbug palette
+    echo "  Patching SVG colors..."
+    for svg in "${SCRIPT_DIR}/${out_dir}"/*.svg; do
+      [ -f "$svg" ] || continue
+      sed -i '' \
+        -e 's/#0061e0/#cc7e19/g' \
+        -e 's/#00296f/#333/g' \
+        -e 's/#01629c/#333/g' \
+        -e 's/stroke:#eeeeee/stroke:#333/g' \
+        "$svg"
+    done
   fi
 }
 

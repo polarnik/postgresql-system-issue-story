@@ -1,13 +1,68 @@
 %%{init: { 'theme': 'dark', 'themeVariables': {
-    'cScale0': '#3a2a1e',
-    'cScaleLabel0': '#FFD02F'
+    'fontFamily': 'Roboto, sans-serif',
+    'lineColor': '#333',
+    'cScale0': '#ff9e1f',
+    'cScale1': 'transparent',
+    'cScale2': 'transparent',
+    'cScale3': 'transparent',
+    'cScale4': 'transparent',
+    'cScale5': 'transparent',
+    'cScale6': 'transparent',
+    'cScale7': 'transparent',
+    'cScale8': 'transparent',
+    'cScale9': 'transparent',
+    'cScale10': 'transparent',
+    'cScale11': 'transparent',
+    'cScaleLabel0': '#000',
+    'cScaleLabel1': 'transparent',
+    'cScaleLabel2': 'transparent',
+    'cScaleLabel3': 'transparent',
+    'cScaleLabel4': 'transparent',
+    'cScaleLabel5': 'transparent',
+    'cScaleLabel6': 'transparent',
+    'cScaleLabel7': 'transparent',
+    'cScaleLabel8': 'transparent',
+    'cScaleLabel9': 'transparent',
+    'cScaleLabel10': 'transparent',
+    'cScaleLabel11': 'transparent',
+    'cScalePeer1': '#cc7e19',
+    'cScalePeer2': 'transparent',
+    'cScalePeer3': 'transparent',
+    'cScalePeer4': 'transparent',
+    'cScalePeer5': 'transparent',
+    'cScalePeer6': 'transparent',
+    'cScalePeer7': 'transparent',
+    'cScalePeer8': 'transparent',
+    'cScalePeer9': 'transparent',
+    'cScalePeer10': 'transparent',
+    'cScalePeer11': 'transparent',
+    'cScalePeer12': 'transparent'
 }}}%%
 
 timeline
     title Расследование
-    section Декабрь-Январь
-        30 дек
-            : segfault
-            : безумная гипотеза
-        7 янв
-            : пинг-понг
+    30 декабря
+        : segfault
+        : гипотеза
+        : пинг-понг
+        : копаем
+    Зацепки
+        : нули в dmesg
+        : не Postgres
+        : нагрузка
+        : воскрешение
+    Три условия
+        : XFS
+        : init_on_free
+        : pressure
+        : лечилка
+    Доказательство
+        : 30 секунд
+        : два теста
+        : git bisect
+        : коммит
+    Root cause
+        : race condition
+        : фикс 6.9
+        : XZ Utils
+        : бэкпорта нет

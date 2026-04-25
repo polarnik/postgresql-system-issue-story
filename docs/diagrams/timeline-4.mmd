@@ -1,37 +1,68 @@
 %%{init: { 'theme': 'dark', 'themeVariables': {
-    'cScale0': '#2a2a4e',
-    'cScale1': '#2a2a4e',
-    'cScale2': '#2a2a4e',
-    'cScale3': '#3a2a1e',
-    'cScaleLabel0': '#eee',
-    'cScaleLabel1': '#eee',
-    'cScaleLabel2': '#eee',
-    'cScaleLabel3': '#FFD02F'
+    'fontFamily': 'Roboto, sans-serif',
+    'lineColor': '#333',
+    'cScale0': '#111111',
+    'cScale1': '#111111',
+    'cScale2': '#111111',
+    'cScale3': '#ff9e1f',
+    'cScale4': 'transparent',
+    'cScale5': 'transparent',
+    'cScale6': 'transparent',
+    'cScale7': 'transparent',
+    'cScale8': 'transparent',
+    'cScale9': 'transparent',
+    'cScale10': 'transparent',
+    'cScale11': 'transparent',
+    'cScaleLabel0': '#fff',
+    'cScaleLabel1': '#fff',
+    'cScaleLabel2': '#fff',
+    'cScaleLabel3': '#000',
+    'cScaleLabel4': 'transparent',
+    'cScaleLabel5': 'transparent',
+    'cScaleLabel6': 'transparent',
+    'cScaleLabel7': 'transparent',
+    'cScaleLabel8': 'transparent',
+    'cScaleLabel9': 'transparent',
+    'cScaleLabel10': 'transparent',
+    'cScaleLabel11': 'transparent',
+    'cScalePeer1': '#333',
+    'cScalePeer2': '#333',
+    'cScalePeer3': '#333',
+    'cScalePeer4': '#cc7e19',
+    'cScalePeer5': 'transparent',
+    'cScalePeer6': 'transparent',
+    'cScalePeer7': 'transparent',
+    'cScalePeer8': 'transparent',
+    'cScalePeer9': 'transparent',
+    'cScalePeer10': 'transparent',
+    'cScalePeer11': 'transparent',
+    'cScalePeer12': 'transparent'
 }}}%%
 
 timeline
     title Расследование
-    section Декабрь-Январь
-        30 дек
-            : segfault
-            : безумная гипотеза
-        7 янв
-            : пинг-понг
-    section Зацепки
-        dmesg
-            : нули вместо кода
-            : не железо, не Postgres
-        Воскрешение
-            : падение без падения
-    section Условия
-        XFS
-            : файловая система
-        init_on_free
-            : ФСТЭК
-        Memory pressure
-            : mmap
-    section Доказательство
-        30 секунд
-            : воспроизведение
-        Два теста
-            : данные и сегфолт
+    30 декабря
+        : segfault
+        : гипотеза
+        : пинг-понг
+        : копаем
+    Зацепки
+        : нули в dmesg
+        : не Postgres
+        : нагрузка
+        : воскрешение
+    Три условия
+        : XFS
+        : init_on_free
+        : pressure
+        : лечилка
+    Доказательство
+        : 30 секунд
+        : два теста
+        : git bisect
+        : коммит
+    Root cause
+        : race condition
+        : фикс 6.9
+        : XZ Utils
+        : бэкпорта нет
